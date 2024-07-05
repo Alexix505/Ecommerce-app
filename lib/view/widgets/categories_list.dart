@@ -13,21 +13,21 @@ class CategoriesList extends StatelessWidget {
       'Fashion',
       'Phones',
       'Accessories',
-      'Cosmetic',
+      'Wigs',
       'Beauty',
     ];
-    List<String> svgImages = [
+    List<String> images = [
       'beauty.png',
       'Phones.png',
       'Accessories.png',
-      'cosmetics.png',
+      'Wigs.png',
       'beauty.png',
     ];
 
     return Row(
       children: List.generate(catList.length, (index) {
         final cart = catList[index];
-        final image = svgImages[index];
+        final image = images[index];
         return CategoriesButton(
           text: cart,
           images: image,

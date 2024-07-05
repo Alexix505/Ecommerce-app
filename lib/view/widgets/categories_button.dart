@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CategoriesButton extends StatelessWidget {
   const CategoriesButton({super.key, required this.text, required this.images});
