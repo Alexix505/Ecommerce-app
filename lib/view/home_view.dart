@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'widgets/appbar.dart';
+import 'widgets/card_swipper.dart';
 import 'widgets/categories_list.dart';
+
+import 'widgets/product_grid.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -42,6 +44,40 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+            const Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          ' Favorites',
+                          style: TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 200,
+                          child: CardSwiper(),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      ' Products',
+                      style: TextStyle(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    ProductGrid(),
+                  ],
+                ),
               ),
             ),
           ],

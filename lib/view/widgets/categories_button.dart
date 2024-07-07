@@ -13,13 +13,14 @@ class CategoriesButton extends StatelessWidget {
         children: [
           Image.asset(
             'assets/images/$images',
-            height: 90,
+          ),
+          const SizedBox(
+            height: 8,
           ),
           Container(
-            decoration: BoxDecoration(
-              color: const Color(0xffEDEDEF),
-              border: Border.all(color: Colors.black),
-              borderRadius: const BorderRadius.all(Radius.circular(25)),
+            decoration: const BoxDecoration(
+              color: Color(0xffEDEDEF),
+              borderRadius: BorderRadius.all(Radius.circular(25)),
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(
