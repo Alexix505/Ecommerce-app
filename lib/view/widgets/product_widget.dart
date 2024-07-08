@@ -1,9 +1,13 @@
-import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/model/product_model.dart';
+import 'package:ecommerce_app/view/product_view.dart';
 import 'package:flutter/material.dart';
 
 class ProductWidget extends StatelessWidget {
+  final ProductsModel product;
   const ProductWidget({
     super.key,
+    required this.product,
   });
 
   @override
@@ -12,63 +16,68 @@ class ProductWidget extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: InkWell(
         borderRadius: BorderRadius.circular(8.0),
-        onTap: () {},
+        onTap: () {
+          // this place handles the routing to the product details page
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ProductView(product: product)));
+        },
         child: Padding(
           padding: const EdgeInsets.all(4.0),
-          child: Stack(
+          child: Column(
             children: [
-              Positioned.fill(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: FancyShimmerImage(
-                      imageUrl:
-                          'https://images.unsplash.com/photo-1465572089651-8fde36c892dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'),
+              Container(
+                height: 100,
+                width: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    12,
+                  ),
+                ),
+                // the Hero widget help to give an animated effect on transition while the cached network image helps you to cached images so it loads easily
+                child: Hero(
+                  tag: product.image!,
+                  child: CachedNetworkImage(
+                    imageUrl: product.image.toString(),
+                  ),
                 ),
               ),
-              const Positioned(
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: 150,
+                ),
                 child: Text(
-                  ' Iron',
+                  '${product.title}',
+                  textAlign: TextAlign.start,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.5,
+                      color: Colors.black.withOpacity(
+                        0.8,
+                      )),
                 ),
               ),
-              Positioned(
-                  right: 0,
-                  bottom: 0,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.favorite,
-                      color: Colors.deepPurple,
-                      size: 28,
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: 150,
+                ),
+                child: Text(
+                  '\$${product.price}',
+                  textAlign: TextAlign.start,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.5,
+                    color: Colors.black.withOpacity(
+                      0.8,
                     ),
-                  )),
-              Positioned(
-                bottom: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    RichText(
-                      text: const TextSpan(
-                        text: ' \$',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500),
-                        children: [
-                          TextSpan(
-                            text: '500',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ],
