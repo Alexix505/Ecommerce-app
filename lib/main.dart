@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:ecommerce_app/model/product_model.dart';
+import 'package:ecommerce_app/services/httpHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'view/home_view.dart';
@@ -6,6 +9,8 @@ import 'view/home_view.dart';
 //Entry point to this ecommerce project
 
 void main() {
+  //this calles the ssl handler on init state
+  HttpOverrides.global = MyHttpOverrides();
   runApp(
     //initialization of the provider listeners
     MultiProvider(

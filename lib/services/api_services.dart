@@ -13,9 +13,9 @@ class APIServices {
     print('response ${jsonDecode(resposnse.body)}');
 
     var data = jsonDecode(resposnse.body);
-    for (var v in data) {
-      print('yes $v \n\n');
-    }
+    // for (var v in data) {
+    //   print(' $v \n\n');
+    // }
     return ProductsModel.productFromSnapshot(data);
   }
 }

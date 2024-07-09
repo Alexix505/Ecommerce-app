@@ -7,10 +7,11 @@ class CardSwiper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // List of network images used for card swipper
     List<String> images = [
       'https://www.ltvplus.com/wp-content/uploads/2024/01/0-LTVplus-Blog-Featured-Image-Template-1.png',
       'https://www.ltvplus.com/wp-content/uploads/2023/12/0-LTVplus-Blog-Featured-Image-Template-1.png',
-      'https://www.ltvplus.com/wp-content/uploads/2024/01/0-LTVplus-Blog-Featured-Image-Template-1.png'
+      'https://www.ltvplus.com/wp-content/uploads/2023/08/0-Featured-Photo-Cart-Recovery.png'
     ];
     return Padding(
       padding: const EdgeInsets.all(8.0),

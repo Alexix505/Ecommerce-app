@@ -8,7 +8,7 @@ class CategoriesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //  List of categories
+    //  List of categories of both names and images
     List<String> catList = [
       'Fashion',
       'Phones',

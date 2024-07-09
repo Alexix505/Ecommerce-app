@@ -35,10 +35,14 @@ class ProductWidget extends StatelessWidget {
                     12,
                   ),
                 ),
+
                 // the Hero widget help to give an animated effect on transition while the cached network image helps you to cached images so it loads easily
                 child: Hero(
                   tag: product.image!,
                   child: CachedNetworkImage(
+                    height: MediaQuery.of(context).size.width *
+                        0.25, // 25% of screen width
+                    width: MediaQuery.of(context).size.width * 0.25, //
                     imageUrl: product.image.toString(),
                   ),
                 ),

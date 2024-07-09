@@ -11,78 +11,89 @@ class ProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: SizedBox(
+        height: 45,
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: AddToCart(),
+        ),
+      ),
       appBar: AppBar(
         title: const Text('Product Details'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Stack(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Hero(
-                tag: product.image!,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 2,
-                  child: CachedNetworkImage(
-                    imageUrl: product.image!,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              Positioned(
-                bottom: 0,
-                child: Text(
-                  ' \$${product.price.toString()}',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700),
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Stack(
                 children: [
-                  Text(
-                    product.title.toString(),
-                    // overflow: TextOverflow.ellipsis,
-                    // maxLines: 2,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
-                      letterSpacing: 0.5,
+                  Hero(
+                    tag: product.image!,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height / 2,
+                      child: CachedNetworkImage(
+                        imageUrl: product.image!,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
+                  Positioned(
+                    bottom: 0,
+                    child: Container(
+                      padding: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                          color: Color(0xfff80808080),
+                          borderRadius: BorderRadius.all(Radius.circular(25))),
+                      child: Text(
+                        ' \$${product.price.toString()}',
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700),
+                      ),
+                    ),
                   ),
-                  Text(
-                    'Product Description',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  Text(
-                    product.description.toString(),
-                  ),
-                  Expanded(
-                      child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: AddToCart(),
-                  ))
                 ],
               ),
-            ),
-          )
-        ],
+              Padding(
+                padding: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product.title.toString(),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      'Product Description',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      product.description.toString(),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
